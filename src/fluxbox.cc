@@ -799,6 +799,12 @@ void Fluxbox::handleEvent(XEvent * const e) {
 
 #if defined(HAVE_RANDR) || defined(HAVE_RANDR1_2)
         if (e->type == s_randr_event_type) {
+
+            // PFK restart fluxbox cuz it's got a bug
+            // in dealing with xrandr resize, specially
+            // with tigervnc server.
+            kill(0,SIGUSR1);
+
 #ifdef HAVE_RANDR1_2
             XRRUpdateConfiguration(e);
 #endif
