@@ -459,9 +459,16 @@ void FluxboxWindow::init() {
 
     bool is_visible = isWindowVisibleOnSomeHeadOrScreen(*this);
 
-    if (fluxbox.isStartup())
-        m_placed = true;
-    else if (m_client->isTransient() ||
+    if (fluxbox.isStartup()) {
+        if (!is_visible) {
+            int cur = screen().getHead(fbWindow());
+            printf("PFK :: recovering lost window, moving to %d,%d\n", 
+                   screen().getHeadX(cur), screen().getHeadY(cur));
+            move(screen().getHeadX(cur), screen().getHeadY(cur));
+            m_placed = false; // allow placement strategy to fix position
+        } else
+            m_placed = true;
+    } else if (m_client->isTransient() ||
         m_client->normal_hint_flags & (PPosition|USPosition)) {
         m_placed = is_visible;
     } else {
