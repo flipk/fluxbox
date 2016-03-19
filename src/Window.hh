@@ -319,6 +319,7 @@ public:
 
     void applyDecorations();
     void toggleDecoration();
+    void toggleWindowTitle();
 
     unsigned int decorationMask() const;
     void setDecorationMask(unsigned int mask, bool apply = true);
