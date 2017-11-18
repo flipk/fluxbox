@@ -42,5 +42,5 @@ uninstall-local:
 fluxbox-%.cat: generated-%.m Translation.m
 	@if test x$(NLSTEST) = "x-DNLS"; then \
 		echo "Creating catfile for $*"; \
-		$(gencat_cmd) fluxbox-$*.cat $(srcdir)/generated-$*.m; \
+		$(gencat_cmd) fluxbox-$*.cat $(abs_builddir)/generated-$*.m; \
 	fi
