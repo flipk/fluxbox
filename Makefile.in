@@ -5221,7 +5221,7 @@ $(PATHFILES): Makefile
 install-data-local: $(pkgdata_FILES)
 	@echo "Installing menu file in $(DESTDIR)$(DEFAULT_MENU)"
 	$(mkinstalldirs) $(DESTDIR)$(dir $(DEFAULT_MENU))
-	$(INSTALL_DATA) $(srcdir)/data/menu $(DESTDIR)$(DEFAULT_MENU)
+	$(INSTALL_DATA) $(abs_builddir)/data/menu $(DESTDIR)$(DEFAULT_MENU)
 	@echo "Installing keys file in $(DESTDIR)$(DEFAULT_KEYS)"
 	$(mkinstalldirs) $(DESTDIR)$(dir $(DEFAULT_KEYS))
 	$(INSTALL_DATA) $(srcdir)/data/keys $(DESTDIR)$(DEFAULT_KEYS)
