@@ -356,9 +356,9 @@ void WinClient::updateMWMHints() {
     }
     Atom motif_wm_hints = FbAtoms::instance()->getMWMHintsAtom();
 
-    if (!(property(motif_wm_hints, 0,
+    if ((property(motif_wm_hints, 0,
                    PropMwmHintsElements, false,
-                   motif_wm_hints, &atom_return,
+                   XA_CARDINAL, &atom_return,
                    &format, &num, &len,
                    (unsigned char **) &m_mwm_hint) &&
           m_mwm_hint)) {

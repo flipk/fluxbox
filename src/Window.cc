@@ -2939,6 +2939,48 @@ void FluxboxWindow::toggleDecoration() {
 
 }
 
+void FluxboxWindow::toggleWindowTitle() {
+     if (isShaded() || isFullscreen())
+        return;
+     // we like mwm hints because they persist across
+     // fluxbox restarts.
+
+    // flags functions decorations
+    unsigned long mwmhints_notitle[3] = {
+        MwmHintsDecorations, 0,
+        MwmDecorBorder | MwmDecorHandle | MwmDecorMenu |
+        MwmDecorIconify | MwmDecorMaximize
+    };
+    unsigned long mwmhints_title[3] = {
+        MwmHintsDecorations, 0,
+        MwmDecorBorder | MwmDecorHandle | MwmDecorMenu |
+        MwmDecorIconify | MwmDecorMaximize | MwmDecorTitle
+    };
+    const WinClient::MwmHints * mwm_hints = m_client->getMwmHint();
+
+    bool title_now = false;
+    if (mwm_hints == NULL)
+        title_now = true;
+    else if ((mwm_hints->flags & MwmHintsDecorations) == 0)
+        title_now = true;
+    else if (mwm_hints->decorations & MwmDecorAll)
+        title_now = true;
+    else if (mwm_hints->decorations & MwmDecorTitle)
+        title_now = true;
+
+    unsigned char * ptr = NULL;
+    if (title_now)
+        ptr = (unsigned char *) mwmhints_notitle;
+    else
+        ptr = (unsigned char *) mwmhints_title;
+
+    XChangeProperty(display, m_client->window(),
+                    FbAtoms::instance()->getMWMHintsAtom(),
+                    XA_CARDINAL, 32, PropModeReplace,
+                    ptr, WinClient::PropMwmHintsElements);
+
+}
+
 unsigned int FluxboxWindow::decorationMask() const {
     unsigned int ret = 0;
     if (decorations.titlebar)

@@ -100,6 +100,8 @@ FbTk::Command<void> *createCurrentWindowCmd(const std::string &command,
         return new CurrentWindowCmd(&FluxboxWindow::detachCurrentClient);
     else if (command == "windowmenu")
         return new CurrentWindowCmd(&FluxboxWindow::popupMenu);   
+    else if (command == "togglewindowtitle")
+        return new CurrentWindowCmd(&FluxboxWindow::toggleWindowTitle);
     return 0;
 }
 
@@ -128,6 +130,7 @@ REGISTER_COMMAND_PARSER(movetableft, createCurrentWindowCmd, void);
 REGISTER_COMMAND_PARSER(movetabright, createCurrentWindowCmd, void);
 REGISTER_COMMAND_PARSER(detachclient, createCurrentWindowCmd, void);
 REGISTER_COMMAND_PARSER(windowmenu, createCurrentWindowCmd, void);
+REGISTER_COMMAND_PARSER(togglewindowtitle, createCurrentWindowCmd, void);
 
 } // end anonymous namespace
 

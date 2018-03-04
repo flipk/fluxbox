@@ -1,0 +1,1 @@
+./configure --prefix=$HOME/pfk/$PFKARCH/fluxbox_1.3.7 --disable-xrandr --enable-xinerama
