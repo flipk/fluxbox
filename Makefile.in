@@ -360,12 +360,12 @@ am__fluxbox_SOURCES_DIST = src/AlphaMenu.cc src/AlphaMenu.hh \
 	src/ButtonTheme.hh src/ButtonTool.cc src/ButtonTool.hh \
 	src/ClockTool.cc src/ClockTool.hh src/GenericTool.cc \
 	src/GenericTool.hh src/IconbarTool.cc src/IconbarTool.hh \
-	src/ToolFactory.cc src/ToolFactory.hh src/ToolTheme.cc \
-	src/ToolTheme.hh src/Toolbar.cc src/Toolbar.hh \
-	src/ToolbarItem.cc src/ToolbarItem.hh src/ToolbarTheme.cc \
-	src/ToolbarTheme.hh src/WorkspaceNameTheme.hh \
-	src/WorkspaceNameTool.cc src/WorkspaceNameTool.hh \
-	src/SystemTray.cc src/SystemTray.hh
+	src/SpacerTool.cc src/SpacerTool.hh src/ToolFactory.cc \
+	src/ToolFactory.hh src/ToolTheme.cc src/ToolTheme.hh \
+	src/Toolbar.cc src/Toolbar.hh src/ToolbarItem.cc \
+	src/ToolbarItem.hh src/ToolbarTheme.cc src/ToolbarTheme.hh \
+	src/WorkspaceNameTheme.hh src/WorkspaceNameTool.cc \
+	src/WorkspaceNameTool.hh src/SystemTray.cc src/SystemTray.hh
 @EWMH_TRUE@am__objects_5 = src/fluxbox-Ewmh.$(OBJEXT)
 @REMEMBER_SRC_TRUE@am__objects_6 = src/fluxbox-Remember.$(OBJEXT)
 @SLIT_SRC_TRUE@am__objects_7 = src/fluxbox-Slit.$(OBJEXT) \
@@ -377,6 +377,7 @@ am__fluxbox_SOURCES_DIST = src/AlphaMenu.cc src/AlphaMenu.hh \
 @TOOLBAR_SRC_TRUE@	src/fluxbox-ClockTool.$(OBJEXT) \
 @TOOLBAR_SRC_TRUE@	src/fluxbox-GenericTool.$(OBJEXT) \
 @TOOLBAR_SRC_TRUE@	src/fluxbox-IconbarTool.$(OBJEXT) \
+@TOOLBAR_SRC_TRUE@	src/fluxbox-SpacerTool.$(OBJEXT) \
 @TOOLBAR_SRC_TRUE@	src/fluxbox-ToolFactory.$(OBJEXT) \
 @TOOLBAR_SRC_TRUE@	src/fluxbox-ToolTheme.$(OBJEXT) \
 @TOOLBAR_SRC_TRUE@	src/fluxbox-Toolbar.$(OBJEXT) \
@@ -1296,7 +1297,8 @@ LDADD = libFbTk.a src/defaults.$(OBJEXT)
 @TOOLBAR_SRC_TRUE@	src/ButtonTool.hh src/ClockTool.cc \
 @TOOLBAR_SRC_TRUE@	src/ClockTool.hh src/GenericTool.cc \
 @TOOLBAR_SRC_TRUE@	src/GenericTool.hh src/IconbarTool.cc \
-@TOOLBAR_SRC_TRUE@	src/IconbarTool.hh src/ToolFactory.cc \
+@TOOLBAR_SRC_TRUE@	src/IconbarTool.hh src/SpacerTool.cc \
+@TOOLBAR_SRC_TRUE@	src/SpacerTool.hh src/ToolFactory.cc \
 @TOOLBAR_SRC_TRUE@	src/ToolFactory.hh src/ToolTheme.cc \
 @TOOLBAR_SRC_TRUE@	src/ToolTheme.hh src/Toolbar.cc \
 @TOOLBAR_SRC_TRUE@	src/Toolbar.hh src/ToolbarItem.cc \
@@ -1989,6 +1991,8 @@ src/fluxbox-GenericTool.$(OBJEXT): src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 src/fluxbox-IconbarTool.$(OBJEXT): src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
+src/fluxbox-SpacerTool.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 src/fluxbox-ToolFactory.$(OBJEXT): src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 src/fluxbox-ToolTheme.$(OBJEXT): src/$(am__dirstamp) \
@@ -2165,6 +2169,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-Slit.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-SlitClient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-SlitTheme.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-SpacerTool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-StyleMenuItem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-SystemTray.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/fluxbox-TextDialog.Po@am__quote@
@@ -3982,6 +3987,20 @@ src/fluxbox-IconbarTool.obj: src/IconbarTool.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/IconbarTool.cc' object='src/fluxbox-IconbarTool.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fluxbox_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/fluxbox-IconbarTool.obj `if test -f 'src/IconbarTool.cc'; then $(CYGPATH_W) 'src/IconbarTool.cc'; else $(CYGPATH_W) '$(srcdir)/src/IconbarTool.cc'; fi`
+
+src/fluxbox-SpacerTool.o: src/SpacerTool.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fluxbox_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/fluxbox-SpacerTool.o -MD -MP -MF src/$(DEPDIR)/fluxbox-SpacerTool.Tpo -c -o src/fluxbox-SpacerTool.o `test -f 'src/SpacerTool.cc' || echo '$(srcdir)/'`src/SpacerTool.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/fluxbox-SpacerTool.Tpo src/$(DEPDIR)/fluxbox-SpacerTool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/SpacerTool.cc' object='src/fluxbox-SpacerTool.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fluxbox_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/fluxbox-SpacerTool.o `test -f 'src/SpacerTool.cc' || echo '$(srcdir)/'`src/SpacerTool.cc
+
+src/fluxbox-SpacerTool.obj: src/SpacerTool.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fluxbox_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/fluxbox-SpacerTool.obj -MD -MP -MF src/$(DEPDIR)/fluxbox-SpacerTool.Tpo -c -o src/fluxbox-SpacerTool.obj `if test -f 'src/SpacerTool.cc'; then $(CYGPATH_W) 'src/SpacerTool.cc'; else $(CYGPATH_W) '$(srcdir)/src/SpacerTool.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/fluxbox-SpacerTool.Tpo src/$(DEPDIR)/fluxbox-SpacerTool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/SpacerTool.cc' object='src/fluxbox-SpacerTool.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fluxbox_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/fluxbox-SpacerTool.obj `if test -f 'src/SpacerTool.cc'; then $(CYGPATH_W) 'src/SpacerTool.cc'; else $(CYGPATH_W) '$(srcdir)/src/SpacerTool.cc'; fi`
 
 src/fluxbox-ToolFactory.o: src/ToolFactory.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(fluxbox_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/fluxbox-ToolFactory.o -MD -MP -MF src/$(DEPDIR)/fluxbox-ToolFactory.Tpo -c -o src/fluxbox-ToolFactory.o `test -f 'src/ToolFactory.cc' || echo '$(srcdir)/'`src/ToolFactory.cc
