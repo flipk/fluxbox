@@ -91,7 +91,9 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = nls/sk_SK
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdcxx.m4 \
+	$(top_srcdir)/m4/ax_cxx_compile_stdcxx_11.m4 \
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
@@ -160,6 +162,7 @@ FREETYPE2_LIBS = @FREETYPE2_LIBS@
 FRIBIDI_CFLAGS = @FRIBIDI_CFLAGS@
 FRIBIDI_LIBS = @FRIBIDI_LIBS@
 GREP = @GREP@
+HAVE_CXX11 = @HAVE_CXX11@
 IMLIB2_CFLAGS = @IMLIB2_CFLAGS@
 IMLIB2_LIBS = @IMLIB2_LIBS@
 INSTALL = @INSTALL@
